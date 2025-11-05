@@ -31,7 +31,7 @@ struct ContentView: View {
                 HistorySection()
             }
             .padding()
-            .navigationTitle("吃啥君")
+            .navigationTitle("今天吃点啥")
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button { showingAdd.toggle() } label: { Image(systemName: "plus") }
