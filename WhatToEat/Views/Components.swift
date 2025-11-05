@@ -12,6 +12,21 @@ struct Chip: View {
     }
 }
 
+struct SelectableChip: View {
+    let title: String
+    let isSelected: Bool
+
+    var body: some View {
+        Text(title)
+            .font(.subheadline)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(isSelected ? Color.blue.opacity(0.2) : Color.gray.opacity(0.15))
+            .foregroundStyle(isSelected ? Color.blue : Color.primary)
+            .clipShape(Capsule())
+    }
+}
+
 struct DishImageView: View {
     enum Style {
         case card

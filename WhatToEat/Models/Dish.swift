@@ -22,8 +22,6 @@ struct Dish: Identifiable, Hashable, Codable {
 
 struct Seed {
     static let dishes: [Dish] = [
-        .init(name: "豚骨拉面", tags: ["面", "汤", "日式"], imageURL: URL(string: "https://images.unsplash.com/photo-1525755662778-989d0524087e")),
-        .init(name: "寿司套餐", tags: ["米饭", "生食", "日式"], imageURL: URL(string: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c")),
         .init(name: "麻婆豆腐", tags: ["辣", "中餐"], imageURL: URL(string: "https://i.ytimg.com/vi/JDRlmbk7YOI/maxresdefault.jpg")),
         .init(name: "宫保鸡丁", tags: ["下饭", "中餐"], imageURL: URL(string: "https://images.unsplash.com/photo-1604908177522-4023acbdef0c")),
         .init(name: "玛格丽特披萨", tags: ["奶酪", "意式"], imageURL: URL(string: "https://images.unsplash.com/photo-1548365328-5473d2fb0fc8")),

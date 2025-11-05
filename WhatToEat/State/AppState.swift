@@ -6,12 +6,13 @@ final class AppState: ObservableObject {
     @Published var history: [Dish] = []
     @Published var favorites: Set<Dish> = []
 
+    var allTags: [String] {
+        let unique = Set(allDishes.flatMap { $0.tags })
+        return unique.sorted()
+    }
+
     func roll(with filter: Filter) -> Dish? {
-        let filtered = allDishes.filter { dish in
-            filter.keyword.isEmpty ||
-            dish.name.contains(filter.keyword) ||
-            dish.tags.contains(where: { $0.contains(filter.keyword) })
-        }
+        let filtered = dishes(matching: filter)
         guard let pick = filtered.randomElement() else { return nil }
         history.insert(pick, at: 0)
         return pick
@@ -20,8 +21,26 @@ final class AppState: ObservableObject {
     func addDish(_ dish: Dish) {
         allDishes.insert(dish, at: 0)
     }
+
+    func dishes(matching filter: Filter) -> [Dish] {
+        allDishes.filter { matches($0, with: filter) }
+    }
+
+    private func matches(_ dish: Dish, with filter: Filter) -> Bool {
+        let keyword = filter.keyword.trimmingCharacters(in: .whitespacesAndNewlines)
+        let matchesKeyword = keyword.isEmpty ||
+            dish.name.localizedCaseInsensitiveContains(keyword) ||
+            dish.tags.contains { $0.localizedCaseInsensitiveContains(keyword) }
+
+        if !matchesKeyword { return false }
+
+        if filter.selectedTags.isEmpty { return true }
+        let dishTags = Set(dish.tags)
+        return filter.selectedTags.isSubset(of: dishTags)
+    }
 }
 
 struct Filter {
     var keyword: String = ""
+    var selectedTags: Set<String> = []
 }

@@ -10,7 +10,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                FilterBar(filter: $filter)
+                FilterBar(filter: $filter, availableTags: state.allTags)
                 Button(action: { current = state.roll(with: filter) }) {
                     Text("今天吃什么？🎲 随机一下")
                         .font(.title3.bold())
@@ -39,7 +39,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showingAll) {
-                AllDishesView()
+                AllDishesView(filter: $filter)
                     .environmentObject(state)
             }
             .sheet(isPresented: $showingAdd) {
@@ -53,11 +53,31 @@ struct ContentView: View {
 
 struct FilterBar: View {
     @Binding var filter: Filter
+    let availableTags: [String]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             TextField("关键词（如：辣/米饭/奶酪）", text: $filter.keyword)
                 .textFieldStyle(.roundedBorder)
+
+            if !availableTags.isEmpty {
+                Text("标签筛选")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                FlowLayout(availableTags) { tag in
+                    let isSelected = filter.selectedTags.contains(tag)
+                    Button {
+                        if isSelected {
+                            filter.selectedTags.remove(tag)
+                        } else {
+                            filter.selectedTags.insert(tag)
+                        }
+                    } label: {
+                        SelectableChip(title: tag, isSelected: isSelected)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
         }
     }
 }
