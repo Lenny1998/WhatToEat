@@ -23,12 +23,11 @@ struct Dish: Identifiable, Hashable, Codable {
 struct Seed {
     static let dishes: [Dish] = [
         .init(name: "麻婆豆腐", tags: ["辣", "中餐"], imageURL: URL(string: "https://i.ytimg.com/vi/JDRlmbk7YOI/maxresdefault.jpg")),
-        .init(name: "宫保鸡丁", tags: ["下饭", "中餐"], imageURL: URL(string: "https://images.unsplash.com/photo-1604908177522-4023acbdef0c")),
-        .init(name: "玛格丽特披萨", tags: ["奶酪", "意式"], imageURL: URL(string: "https://images.unsplash.com/photo-1548365328-5473d2fb0fc8")),
-        .init(name: "沙拉碗", tags: ["清淡", "美式"], imageURL: URL(string: "https://images.unsplash.com/photo-1498837167922-ddd27525d352")),
-        .init(name: "咖喱饭", tags: ["咖喱", "日式"], imageURL: URL(string: "https://images.unsplash.com/photo-1551183053-bf91a1d81141")),
-        .init(name: "牛肉饭", tags: ["快餐", "日式"], imageURL: URL(string: "https://images.unsplash.com/photo-1478144592103-25e218a04891")),
-        .init(name: "泰式冬阴功", tags: ["酸辣", "东南亚"], imageURL: URL(string: "https://images.unsplash.com/photo-1567157743317-934d0e53d3c1")),
-        .init(name: "越南河粉", tags: ["米粉", "东南亚"], imageURL: URL(string: "https://images.unsplash.com/photo-1533777419517-3e4017e2e9ac"))
+        .init(name: "肥牛饭", tags: ["快餐", "日式"], imageURL: URL(string: "https://i3.meishichina.com/atta/recipe/2017/09/17/2017091715056277922246793799.jpg?x-oss-process=style/p800")),
+        .init(name: "照烧鸡腿饭", tags: ["快餐", "日式"], imageURL: URL(string: "https://www.onceuponachef.com/images/2024/01/chicken-teriyaki.jpg")),
+        .init(name: "爆炒鱿鱼", tags: ["辣", "中餐"], imageURL: URL(string: "https://q7.itc.cn/images01/20250314/8a01694391ac45ca89fdadb80622e3a7.jpeg")),
+        .init(name: "西红柿鸡蛋面", tags: ["中餐"], imageURL: URL(string: "https://i.ytimg.com/vi/WhpDt5LA184/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBX94_I3kfkeIn62EXj410f-vfsFg")),
+        .init(name: "黑椒牛柳", tags: ["辣", "中餐"], imageURL: URL(string: "https://imgs.gvm.com.tw/upload/gallery/health/65453_01.jpg")),
+        .init(name: "煲仔饭", tags: ["中餐"], imageURL: URL(string: "https://pic2.zhimg.com/v2-abd2adf1a21ec77d775954865bf9a37b_1440w.jpg")),
     ]
 }
